@@ -216,7 +216,40 @@ body{
     gap: 1.5rem;
 }
 
+.finished-product{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    padding: 1rem;
+    min-height: 200px;
+}
 
+.product-wrapper{
+    background: lightgray;
+    border-radius: 10px;
+    padding-inline: 1.5rem;
+    padding-block: 1rem;
+    min-height: 100px;
+}
+
+
+.product{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 450px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+}
+
+.total-price-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px;
+}
 
 
 .btn{
