@@ -205,7 +205,30 @@ body{
     padding: 1rem;
 }
 
+.add-on-choice.active{
+    background-color: #c7e1ff;
+    border-color: blue;
+}
 
+.choice-info{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+
+.btn{
+    cursor: pointer;
+}
+.go-back{
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: none;
+    color: lightgray;
+    font-family: 'Ubuntu-Medium';
+}
 .hide{
     display: none;
 }
