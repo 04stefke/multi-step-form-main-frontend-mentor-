@@ -43,6 +43,15 @@ body{
     padding-right: 4rem;
     height: fit-content;
 }
+
+.step{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 570px;
+    width: 500px;
+}
 /* sidebar */
 
 .sidebar{
@@ -100,15 +109,6 @@ body{
 /* sidebar ending */
 /* step-one styles */
 
-.step-one{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    height: 570px;
-    width: 500px;
-}
-
 .step-one-intro{
     width: 100%;
 }
@@ -160,15 +160,6 @@ body{
 }
 /* step two */
 
-.step-two{
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    align-items: center;
-    height: 570px;
-    width: 500px;
-}
-
 .plan-choices{
     display: flex;
     justify-content: space-between;
@@ -195,6 +186,23 @@ body{
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+/* step three */
+
+.add-ons{
+    display: grid;
+    gap: 1rem;
+}
+
+.add-on-choice{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 1rem;
 }
 
 
