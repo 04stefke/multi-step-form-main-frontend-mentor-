@@ -21,25 +21,27 @@
 
 body{
     font-family: 'Ubuntu-Regular';
-    min-width: 100vh;
+    min-width: 100vw;
     background-color: rgb(207, 235, 245);
-}
-
-.wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lightgray;
-
+    min-height: 100vh;
 }
+
+
 
 .card{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: rgb(255, 255, 255);
-    height: 70vh;
-    gap: 7rem;
+    width: fit-content ;
+    padding: 1rem;
+    border-radius: 20px;
+    gap: 5rem;
+    padding-right: 4rem;
+    height: fit-content;
 }
 /* sidebar */
 
@@ -48,12 +50,12 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 90%;
-    width: 30%;
+    height: 568px;
+    width: 274px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    
+    border-radius: 10px;
 }
 
 .options{
@@ -101,11 +103,10 @@ body{
 .step-one{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
-    height: 90%;
-    padding-top: 3rem;
-    padding-bottom: 1rem;
+    height: 570px;
+    width: 500px;
 }
 
 .step-one-intro{
@@ -157,6 +158,46 @@ body{
     border-radius: 10px;
 
 }
+/* step two */
+
+.step-two{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    height: 570px;
+    width: 500px;
+}
+
+.plan-choices{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.choice{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.choice.active{
+    border-color: blue;
+}
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
 
-
+.hide{
+    display: none;
+}
