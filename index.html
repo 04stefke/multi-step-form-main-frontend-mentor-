@@ -9,9 +9,9 @@
   <title>Frontend Mentor | Multi-step form</title>
 
 </head>
-<body>
+<body class="">
 
-  <main>
+  <main class="card">
     <!-- Sidebar start -->
     <section class="sidebar">
       <div class="option-one">
@@ -31,24 +31,35 @@
         <p>Summary</p>
       </div>
     </section>
-    <!-- Sidebar end -->
+    <!-- Sidebar end --> 
+
+    <!-- Step 1 start -->
+    <section class="step-one">
+      <div class="step-one-intro">
+        <h1>Personal info</h1>
+        <p>Please provide your name, email address, and phone number.</p>
+      </div>
+
+      <form action="" class="form">
+        <div class="inputs">
+          <div class="input">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="e.g. Stephen King">
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="e.g. stephenking@lorem.com">
+          </div>
+          <div class="input">
+            <label for="number">Phone Number</label>
+            <input type="number" id="number" placeholder="e.g. +1 234 567 890">
+          </div>
+        </div>
+        <button>Next Step</button>
+      </form>
+    </section>
+
   </main>
-
-
-
-  <!-- Step 1 start -->
-
-  Personal info
-  Please provide your name, email address, and phone number.
-
-  Name
-  e.g. Stephen King
-
-  Email Address
-  e.g. stephenking@lorem.com
-
-  Phone Number
-  e.g. +1 234 567 890
 
   Next Step
 

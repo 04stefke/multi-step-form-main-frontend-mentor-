@@ -21,4 +21,30 @@
 
 body{
     font-family: 'Ubuntu-Regular';
+    min-width: 100vh;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    height: 70vh;
+}
+
+.sidebar{
+    background-image: url(./assets/images/bg-sidebar-desktop.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90%;
+    width: 30%;
 }
