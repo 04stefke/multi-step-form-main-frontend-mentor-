@@ -275,6 +275,17 @@ body{
 
 /* billing cycle switch */
 
+.switch-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+    background: lightcyan;
+    padding-block: 1rem;
+    border-radius: 10px;
+}
+
 .switch{
     position: relative;
     display: inline-block;
