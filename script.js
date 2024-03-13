@@ -2,11 +2,8 @@ const multiStepForm = document.querySelector('[data-multi-step-form]')
 const formSteps = [...multiStepForm.querySelectorAll('[data-step]')]
 const stepCount = [...document.querySelectorAll('[data-step-number]')]
 
+const billingCycleCheckbox = document.getElementById('billingCycle')
 const formPlans = [...multiStepForm.querySelectorAll('[data-plan]')]
-
-const billingCycleSwitch = document.getElementById('billingCycle')
-
-let isYearlyBilling = billingCycleSwitch.checked
 
 let currentStep = formSteps.findIndex(step => {
     return step.classList.contains('active')
@@ -87,8 +84,49 @@ function showCurrentPlan () {
     })
 }
 
-function updateTotalPrice(){
-    let basePrice = currentPlan === 0 ? 9 : currentPlan === 1 ? 12 : 15;
 
-    let totalPrice = isYearlyBilling ? basePrice * 12 : basePrice
+
+billingCycleCheckbox.addEventListener('change', function(){
+    const priceData = document.querySelectorAll('.price')
+
+    priceData.forEach((data) => {
+        const priceElement = data.dataset.payment.split(', ')
+        const monthlyPrice = priceElement[0]
+        const yearlyPrice = priceElement[1]
+        const bonus = document.querySelectorAll('.year-free')
+
+        if(billingCycleCheckbox.checked){
+            data.textContent = yearlyPrice
+            // totalPrice.textContent = updateTotalPrice(yearlyPrice)
+            bonus.forEach(item => item.classList.remove('hide'))
+        } else {
+            data.textContent = monthlyPrice
+            // totalPrice.textContent = updateTotalPrice(monthlyPrice)
+            bonus.forEach(item => item.classList.add('hide'))
+        }
+    
+    })
+    console.log(priceData)
+
+    console.log()
+
+    const chosenProductPrice = document.querySelector('.final-product-price')
+    // const totalPrice = document.querySelector('.total p')
+})
+
+function updateTotalPrice(price){
+    let total = parseFloat(price.slice(1))
+
+    const addOnChoices = document.querySelectorAll('.add-on-choice input[type="checkbox"]')
+    const addOnPrices = document.querySelectorAll('.add-on-choice .price-choice')
+
+    for (let i = 0; i < addOnChoices.length; i++) {
+        if(addOnChoices[i].checked){
+            total += parseFloat(addOnPrices[i].textContent.slice(i))
+        }
+        
+    }
+
+    return '$' + total.toFixed(2)
+
 }
