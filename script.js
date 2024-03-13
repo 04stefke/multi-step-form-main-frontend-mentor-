@@ -16,20 +16,21 @@ if(currentStep < 0){
     currentStep = 0
     showCurrentStep()
 }
-
+console.log(currentStep)
 if(currentStepCount < 0) {
     currentStepCount = 0
+    showCurrentCountStep()
 }
-
-showCurrentCountStep()
+console.log(currentStepCount)
 
 multiStepForm.addEventListener('click', e => {
-    e.preventDefault()
     let incrementor
 
     if(e.target.matches('[data-next]')){
+        e.preventDefault()
         incrementor = 1    
     } else if(e.target.matches('[data-prev]')){
+        e.preventDefault()
         incrementor = -1
     }
 
@@ -44,9 +45,8 @@ multiStepForm.addEventListener('click', e => {
         showCurrentStep()
         showCurrentCountStep()
     }
-
+    
     showCurrentStep()
-    return currentStepCount
 })
 
 function showCurrentStep () {
