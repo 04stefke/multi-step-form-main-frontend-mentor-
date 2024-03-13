@@ -4,6 +4,10 @@ const stepCount = [...document.querySelectorAll('[data-step-number]')]
 
 const formPlans = [...multiStepForm.querySelectorAll('[data-plan]')]
 
+const billingCycleSwitch = document.getElementById('billingCycle')
+
+let isYearlyBilling = billingCycleSwitch.checked
+
 let currentStep = formSteps.findIndex(step => {
     return step.classList.contains('active')
 })
@@ -81,4 +85,10 @@ function showCurrentPlan () {
     formPlans.forEach((plan, index) => {
         plan.classList.toggle('active', index === currentPlan)
     })
+}
+
+function updateTotalPrice(){
+    let basePrice = currentPlan === 0 ? 9 : currentPlan === 1 ? 12 : 15;
+
+    let totalPrice = isYearlyBilling ? basePrice * 12 : basePrice
 }
