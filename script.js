@@ -1,9 +1,12 @@
+// calling all needed elements 
 const multiStepForm = document.querySelector('[data-multi-step-form]')
 const formSteps = [...multiStepForm.querySelectorAll('[data-step]')]
 const stepCount = [...document.querySelectorAll('[data-step-number]')]
 
 const billingCycleCheckbox = document.getElementById('billingCycle')
 const formPlans = [...multiStepForm.querySelectorAll('[data-plan]')]
+
+// setting the current steps and count
 
 let currentStep = formSteps.findIndex(step => {
     return step.classList.contains('active')
@@ -13,16 +16,19 @@ let currentStepCount = stepCount.findIndex(count => {
     return count.classList.contains('active')
 })
 
+// selecting the default values 
+
 if(currentStep < 0){
     currentStep = 0
     showCurrentStep()
 }
-console.log(currentStep)
+
 if(currentStepCount < 0) {
     currentStepCount = 0
     showCurrentCountStep()
 }
-console.log(currentStepCount)
+
+// event listener for the prev, and next buttons 
 
 multiStepForm.addEventListener('click', e => {
     let incrementor
@@ -50,11 +56,15 @@ multiStepForm.addEventListener('click', e => {
     showCurrentStep()
 })
 
+// showCurrentStep gives the selected step an active class to apply styles
+
 function showCurrentStep () {
     formSteps.forEach((step, index) => {
         step.classList.toggle('active', index === currentStep)
     })
 }
+
+// showCurrentCountStep gives the selected stepCount an active class to apply styles
 
 function showCurrentCountStep( ){
     stepCount.forEach((count, index) => {
@@ -62,21 +72,29 @@ function showCurrentCountStep( ){
     })
 }
 
+// setting the current plan selected
+
 let currentPlan = formPlans.findIndex(plan => {
     return plan.classList.contains('active')
 })
+
+// making the first value as default
 
 if(currentPlan < 0) {
     currentPlan = 0
     showCurrentPlan()
 }
 
+// for every plan giving an event listener to update the currentPlan value to the selected one
+
 formPlans.forEach((plan, index) => {
-    plan.addEventListener('click', e => {
+    plan.addEventListener('click', () => {
         currentPlan = index
         showCurrentPlan()
     })
 })
+
+// this gives the plan an active class to apply different styles 
 
 function showCurrentPlan () {
     formPlans.forEach((plan, index) => {
@@ -84,7 +102,7 @@ function showCurrentPlan () {
     })
 }
 
-
+// event listener for the billing cycle checkbox which changes all the price values to the selected cycle
 
 billingCycleCheckbox.addEventListener('change', function(){
     const priceData = document.querySelectorAll('.price')
@@ -97,36 +115,11 @@ billingCycleCheckbox.addEventListener('change', function(){
 
         if(billingCycleCheckbox.checked){
             data.textContent = yearlyPrice
-            // totalPrice.textContent = updateTotalPrice(yearlyPrice)
             bonus.forEach(item => item.classList.remove('hide'))
         } else {
             data.textContent = monthlyPrice
-            // totalPrice.textContent = updateTotalPrice(monthlyPrice)
             bonus.forEach(item => item.classList.add('hide'))
         }
     
     })
-    console.log(priceData)
-
-    console.log()
-
-    const chosenProductPrice = document.querySelector('.final-product-price')
-    // const totalPrice = document.querySelector('.total p')
 })
-
-function updateTotalPrice(price){
-    let total = parseFloat(price.slice(1))
-
-    const addOnChoices = document.querySelectorAll('.add-on-choice input[type="checkbox"]')
-    const addOnPrices = document.querySelectorAll('.add-on-choice .price-choice')
-
-    for (let i = 0; i < addOnChoices.length; i++) {
-        if(addOnChoices[i].checked){
-            total += parseFloat(addOnPrices[i].textContent.slice(i))
-        }
-        
-    }
-
-    return '$' + total.toFixed(2)
-
-}
