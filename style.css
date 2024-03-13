@@ -109,6 +109,10 @@ body{
 /* sidebar ending */
 /* step-one styles */
 
+.step{
+    display: none;
+}
+
 .step-one-intro{
     width: 100%;
 }
@@ -264,6 +268,7 @@ body{
     color: lightgray;
     font-family: 'Ubuntu-Medium';
 }
-.hide{
-    display: none;
+
+.step.active{
+    display: flex;
 }
