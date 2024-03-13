@@ -19,15 +19,16 @@ if(currentStep < 0){
 
 if(currentStepCount < 0) {
     currentStepCount = 0
-    showCurrentCountStep()
 }
+
+showCurrentCountStep()
 
 multiStepForm.addEventListener('click', e => {
     e.preventDefault()
     let incrementor
 
     if(e.target.matches('[data-next]')){
-        incrementor = 1
+        incrementor = 1    
     } else if(e.target.matches('[data-prev]')){
         incrementor = -1
     }
@@ -39,10 +40,13 @@ multiStepForm.addEventListener('click', e => {
 
     if(allValid) {
         currentStep += incrementor
+        currentStepCount = currentStep
         showCurrentStep()
+        showCurrentCountStep()
     }
 
     showCurrentStep()
+    return currentStepCount
 })
 
 function showCurrentStep () {
@@ -52,7 +56,9 @@ function showCurrentStep () {
 }
 
 function showCurrentCountStep( ){
-    
+    stepCount.forEach((count, index) => {
+        count.classList.toggle('active', index === currentStepCount)
+    })
 }
 
 let currentPlan = formPlans.findIndex(plan => {
@@ -76,4 +82,3 @@ function showCurrentPlan () {
         plan.classList.toggle('active', index === currentPlan)
     })
 }
-console.log(currentPlan)
