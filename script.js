@@ -17,7 +17,7 @@ let currentStepCount = stepCount.findIndex((count) =>
   count.classList.contains("active")
 );
 
-let currentPlan = 0
+let currentPlan = 0;
 
 // Handle initial step and count selection
 initializeStep();
@@ -42,7 +42,7 @@ function handleStepChange(event) {
     currentStepCount = currentStep;
     showCurrentStep();
     showCurrentCountStep();
-    updateFinalPrice()
+    updateFinalPrice();
   }
 }
 
@@ -67,13 +67,12 @@ formPlans.forEach((plan, index) => {
   plan.addEventListener("click", () => {
     currentPlan = index;
     updatePlanSelection(plan);
-    updatePriceDisplay()
+    updatePriceDisplay();
     showCurrentPlan();
   });
 });
 
 // this gives the plan an active class to apply different styles
-
 
 function showCurrentPlan() {
   formPlans.forEach((plan, index) => {
@@ -98,7 +97,9 @@ function updatePlanSelection(plan) {
 }
 
 function updateFinalPrice() {
-  const selectedPlanPrices = formPlans[currentPlan].querySelector(".price").dataset.payment.split(", ");
+  const selectedPlanPrices = formPlans[currentPlan]
+    .querySelector(".price")
+    .dataset.payment.split(", ");
   const selectedPlanPrice = billingCycleCheckbox.checked
     ? selectedPlanPrices[1]
     : selectedPlanPrices[0];
@@ -109,9 +110,15 @@ function updateFinalPrice() {
 // Function to update price display based on billing cycle
 function updatePriceDisplay() {
   const cycleTotal = document.querySelector("[data-cycle]");
+  let discount = document.querySelectorAll(".year-free");
   cycleTotal.textContent = billingCycleCheckbox.checked ? "Yearly" : "Monthly";
+  discount.forEach((item) => {
+    billingCycleCheckbox.checked
+    ? item.classList.remove("hide")
+    : item.classList.add("hide");
+  }) 
   formPlans.forEach((plan) => updatePlanSelection(plan)); // Update all plan prices
-  
+
   const addOnPrices = document.querySelectorAll(".add-on-choice .price-choice");
   addOnPrices.forEach((priceElement) => {
     const prices = priceElement.dataset.payment.split(", ");
@@ -129,5 +136,5 @@ function initializeStep() {
   }
   showCurrentStep();
   showCurrentCountStep();
-  updatePlanSelection(formPlans[currentPlan])
+  updatePlanSelection(formPlans[currentPlan]);
 }
