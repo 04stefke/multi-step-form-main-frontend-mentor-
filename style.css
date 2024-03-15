@@ -145,6 +145,7 @@ body {
   color: var(--cool-gray);
 }
 
+/* form styles */
 .form {
   width: 100%;
   display: flex;
@@ -152,6 +153,7 @@ body {
   color: var(--marine-blue);
 }
 
+/* step one inputs wrapper */
 .inputs {
   display: flex;
   flex-direction: column;
@@ -160,12 +162,29 @@ body {
   gap: 2rem;
 }
 
+/* input */
 .input {
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 0.5rem;
+
 }
 
+/* each input bar */
+.input input {
+  outline: none;
+  border: 1px solid lightgray;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.input label{
+  font-size: 14px ;
+  font-weight: 600;
+}
+
+/* next step btn */
 .next-step {
   align-self: flex-end;
   width: fit-content;
@@ -178,17 +197,6 @@ body {
   font-family: "Ubuntu-Medium";
 }
 
-.input {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.input input {
-  outline: none;
-  border: 1px solid lightgray;
-  padding: 1rem;
-  border-radius: 10px;
-}
 /* step two */
 
 .plan-choices {
