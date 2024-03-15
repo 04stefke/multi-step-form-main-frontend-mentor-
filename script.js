@@ -7,6 +7,8 @@ const billingCycleCheckbox = document.getElementById("billingCycle");
 const formPlans = [...multiStepForm.querySelectorAll("[data-plan]")];
 const summaryPlan = document.querySelector(".chosen-product");
 const summaryPlanPrice = document.querySelector(".final-product-price");
+const addOnCheckBox = document.querySelectorAll('.add-on-choice input[type="checkbox"]')
+let selectedAddOns = []
 // setting the current steps and count
 
 let currentStep = formSteps.findIndex((step) =>
@@ -27,6 +29,19 @@ initializeStep();
 multiStepForm.addEventListener("click", handleStepChange);
 
 billingCycleCheckbox.addEventListener("change", updatePriceDisplay);
+
+addOnCheckBox.forEach((checkbox) => {
+  checkbox.addEventListener('change', (e) => {
+    const addOn = e.target.closest('.add-on-choice')
+    if(e.target.checked){
+      selectedAddOns.push(addOn)
+    } else {
+      selectedAddOns = selectedAddOns.filter(item => item !== addOn)
+    }
+
+    updateChosenServices()
+  })
+})
 
 function handleStepChange(event) {
   if (!event.target.matches("[data-next],[data-prev]")) return;
@@ -126,6 +141,8 @@ function updatePriceDisplay() {
     priceElement.textContent = selectedPrice;
   });
 }
+
+
 
 function initializeStep() {
   if (currentStep < 0) {
