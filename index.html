@@ -1,275 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
-  <title>Frontend Mentor | Multi-step form</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Mentor | Multi-step form</title>
+  </head>
+  <body class="">
+    <main class="card">
+      <!-- Sidebar start -->
 
-</head>
-<body class="">
-
-  <main class="card">
-    <!-- Sidebar start -->
-
-    <section class="sidebar">
-
-      <div class="option-one options">
-
-        <div class="number" id="stepOne" data-step-number>1</div>
-        <div class="option">
-          <span>Step 1</span>
-          <p>Your info</p>
-        </div>
-
-      </div>
-
-      <div class="option-two options">
-
-        <div class="number" id="stepTwo" data-step-number>2</div>
-        <div class="option ">
-          <span>Step 2</span>
-          <p>Select plan</p>
-
-        </div>
-
-      </div>
-
-      <div class="option-three options">
-
-        <div class="number" id="stepThree" data-step-number>3</div>
-        <div class="option">
-          <span>Step 3</span>
-          <p>Add-ons</p>       
-        </div>
-
-      </div>
-
-      <div class="option-four options">
-
-        <div class="number" id="stepFour" data-step-number>4</div>
-        <div class="option">
-          <span>Step 4</span>
-          <p>Summary</p>          
-        </div>
-
-      </div>
-
-    </section>
-    <!-- Sidebar end --> 
-
-    <!-- Steps start -->
-    <form class="steps" data-multi-step-form>
-      <!-- Step 1 start -->
-      <div class="step-one step" data-step>
-        <div class="step-one-intro">
-          <h1>Personal info</h1>
-          <p>Please provide your name, email address, and phone number.</p>
-        </div>
-
-      <div class="form">
-        <div class="inputs">
-          <div class="input">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="e.g. Stephen King" >
-          </div>
-          <div class="input">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="e.g. stephenking@lorem.com" >
-          </div>
-          <div class="input">
-            <label for="number">Phone Number</label>
-            <input type="tel" id="number" placeholder="e.g. +1 234 567 890"  >
+      <section class="sidebar">
+        <div class="option-one options">
+          <div class="number" id="stepOne" data-step-number>1</div>
+          <div class="option">
+            <span>Step 1</span>
+            <p>Your info</p>
           </div>
         </div>
-        
-      </div>
 
-      <button class="btn next-step" data-next>
-        Next Step
-      </button>
-
-      </div>
-      <!-- Step 1 end -->
-
-      <!-- Step 2 start -->
-      <div class="step-two step" data-step>
-
-        <div class="step-one-intro">
-          <h1>Select your plan</h1>
-          <p>You have the option of monthly or yearly billing.</p>
+        <div class="option-two options">
+          <div class="number" id="stepTwo" data-step-number>2</div>
+          <div class="option">
+            <span>Step 2</span>
+            <p>Select plan</p>
+          </div>
         </div>
 
-        <div class="plan-choices">
+        <div class="option-three options">
+          <div class="number" id="stepThree" data-step-number>3</div>
+          <div class="option">
+            <span>Step 3</span>
+            <p>Add-ons</p>
+          </div>
+        </div>
 
-          <div class="choice-one choice" data-plan>
-            <div class="icon">
-              <img src="./assets/images/icon-arcade.svg" alt="arcade option">
-            </div>
-            <div class="info">
-              <p>Arcade</p>
-              <span class="price" data-payment="$9/mo, $90/yr">$9/mo</span>
-              <span class="year-free hide">2 months free</span>
-            </div>
+        <div class="option-four options">
+          <div class="number" id="stepFour" data-step-number>4</div>
+          <div class="option">
+            <span>Step 4</span>
+            <p>Summary</p>
+          </div>
+        </div>
+      </section>
+      <!-- Sidebar end -->
+
+      <!-- Steps start -->
+      <form class="steps" data-multi-step-form>
+        <!-- Step 1 start -->
+        <div class="step-one step" data-step>
+          <div class="step-one-intro">
+            <h1>Personal info</h1>
+            <p>Please provide your name, email address, and phone number.</p>
           </div>
 
-          <div class="choice-two choice" data-plan>
-            <div class="icon">
-              <img src="./assets/images/icon-advanced.svg" alt="arcade option">
-            </div>
-            <div class="info">
-              <p>Advanced</p>
-              <span class="price" data-payment="$12/mo, $120/yr">$12/mo</span>
-              <span class="year-free hide">2 months free</span>
-            </div>
-          </div>
-
-          <div class="choice-three choice" data-plan>
-            <div class="icon">
-              <img src="./assets/images/icon-pro.svg" alt="arcade option">
-            </div>
-            <div class="info">
-              <p>Pro</p>
-              <span class="price" data-payment="$15/mo, $150/yr">$15/mo</span>
-              <span class="year-free hide">2 months free</span>
-            </div>
-          </div>
-
-        </div>
-        <div class="switch-wrapper">
-          <span>Monthly</span>
-          <label class="switch">
-            <input type="checkbox" name="" id="billingCycle">
-            <span class="slider round"></span>
-          </label> 
-          <span>Yearly</span>
-        </div>
-
-
-        <div class="navigation">
-
-          <button class="btn go-back" data-prev>Go Back</button>
-          <button class="btn next-step" data-next>Next Step</button>   
-
-        </div>
-
-      </div>
-      <!-- Step 2 end -->
-
-      <!-- Step 3 start -->
-      <div class="step-three step" data-step>
-        <div class="step-one-intro">
-          <h1>Pick add-ons</h1>
-          <p>Add-ons help enhance your gaming experience.</p>
-        </div>
-
-        <div class="add-ons">
-
-          <div class="first-choice add-on-choice">
-            <div class="choice-info">
-              <input type="checkbox">
-              <div class="option-description">
-                <p>Online service</p>
-                <span>Access to multiplayer games</span>
+          <div class="form">
+            <div class="inputs">
+              <div class="input">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="e.g. Stephen King" />
               </div>
-
-            </div>
-            <p class="price-choice price"  data-payment="+$1/mo, +10/yr">+$1/mo</p>
-          </div>
-
-          <div class="second-choice add-on-choice">
-            <div class="choice-info">
-              <input type="checkbox">
-              <div class="option-description">
-                <p>Larger storage</p>
-                <span>Extra 1TB of cloud save</span>                
+              <div class="input">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="e.g. stephenking@lorem.com"
+                />
               </div>
-
-            </div>
-            <p class="price-choice price"  data-payment="+$2/mo, +20/yr">+$2/mo</p>
-          </div>
-
-          <div class="third-choice add-on-choice">
-            <div class="choice-info">
-              <input type="checkbox">
-              <div class="option-description">
-                <p>Customizable Profile</p>
-                <span>Custom theme on your profile</span>                
+              <div class="input">
+                <label for="number">Phone Number</label>
+                <input
+                  type="tel"
+                  id="number"
+                  placeholder="e.g. +1 234 567 890"
+                />
               </div>
-
             </div>
-            <p class="price-choice price"  data-payment="+$2/mo, +20/yr">+$2/mo</p>
           </div>
 
+          <button class="btn next-step" data-next>Next Step</button>
         </div>
+        <!-- Step 1 end -->
 
-        <div class="navigation">
-          <button class="btn go-back" data-prev>Go Back</button>
-          <button class="btn next-step" data-next>Next Step</button>        
+        <!-- Step 2 start -->
+        <div class="step-two step" data-step>
+          <div class="step-one-intro">
+            <h1>Select your plan</h1>
+            <p>You have the option of monthly or yearly billing.</p>
+          </div>
+
+          <div class="plan-choices">
+            <div class="choice-one choice" data-plan>
+              <div class="icon">
+                <img
+                  src="./assets/images/icon-arcade.svg"
+                  alt="arcade option"
+                />
+              </div>
+              <div class="info">
+                <p>Arcade</p>
+                <span class="price" data-payment="$9/mo, $90/yr">$9/mo</span>
+                <span class="year-free hide">2 months free</span>
+              </div>
+            </div>
+
+            <div class="choice-two choice" data-plan>
+              <div class="icon">
+                <img
+                  src="./assets/images/icon-advanced.svg"
+                  alt="arcade option"
+                />
+              </div>
+              <div class="info">
+                <p>Advanced</p>
+                <span class="price" data-payment="$12/mo, $120/yr">$12/mo</span>
+                <span class="year-free hide">2 months free</span>
+              </div>
+            </div>
+
+            <div class="choice-three choice" data-plan>
+              <div class="icon">
+                <img src="./assets/images/icon-pro.svg" alt="arcade option" />
+              </div>
+              <div class="info">
+                <p>Pro</p>
+                <span class="price" data-payment="$15/mo, $150/yr">$15/mo</span>
+                <span class="year-free hide">2 months free</span>
+              </div>
+            </div>
+          </div>
+          <div class="switch-wrapper">
+            <span>Monthly</span>
+            <label class="switch">
+              <input type="checkbox" name="" id="billingCycle" />
+              <span class="slider round"></span>
+            </label>
+            <span>Yearly</span>
+          </div>
+
+          <div class="navigation">
+            <button class="btn go-back" data-prev>Go Back</button>
+            <button class="btn next-step" data-next>Next Step</button>
+          </div>
         </div>
+        <!-- Step 2 end -->
 
-      </div>
-      <!-- Step 3 end -->
+        <!-- Step 3 start -->
+        <div class="step-three step" data-step>
+          <div class="step-one-intro">
+            <h1>Pick add-ons</h1>
+            <p>Add-ons help enhance your gaming experience.</p>
+          </div>
 
-      <!-- Step 4 start -->
-      <div class="step-four step" data-step>
-
-        <div class="step-one-intro">
-          <h1>Finishing up</h1>
-          <p>Double-check everything looks OK before confirming.</p>
-        </div>
-
-        <div class="finished-product">
-
-          <div class="product-wrapper">
-
-            <div class="product">
-              <div class="product-info">
-                <div class="summaryWrapper">
-                  <p class="chosen-product">Arcade</p>
-                  <span data-cycle>Monthly</span>
+          <div class="add-ons">
+            <div class="first-choice add-on-choice">
+              <div class="choice-info">
+                <input type="checkbox" />
+                <div class="option-description">
+                  <p>Online service</p>
+                  <span>Access to multiplayer games</span>
                 </div>
-                
-                <span>Change</span>
               </div>
-              <p class="final-product-price">$9/mo</p>
-            </div>
-            <div class="chosen-services">
+              <p class="price-choice price" data-payment="+$1/mo, +10/yr">
+                +$1/mo
+              </p>
             </div>
 
+            <div class="second-choice add-on-choice">
+              <div class="choice-info">
+                <input type="checkbox" />
+                <div class="option-description">
+                  <p>Larger storage</p>
+                  <span>Extra 1TB of cloud save</span>
+                </div>
+              </div>
+              <p class="price-choice price" data-payment="+$2/mo, +20/yr">
+                +$2/mo
+              </p>
+            </div>
+
+            <div class="third-choice add-on-choice">
+              <div class="choice-info">
+                <input type="checkbox" />
+                <div class="option-description">
+                  <p>Customizable Profile</p>
+                  <span>Custom theme on your profile</span>
+                </div>
+              </div>
+              <p class="price-choice price" data-payment="+$2/mo, +20/yr">
+                +$2/mo
+              </p>
+            </div>
           </div>
 
-          <div class="total-price-wrapper">
-            <span class="total">Total</span>
-            <p>+$12/mo</p>
+          <div class="navigation">
+            <button class="btn go-back" data-prev>Go Back</button>
+            <button class="btn next-step" data-next>Next Step</button>
+          </div>
+        </div>
+        <!-- Step 3 end -->
+
+        <!-- Step 4 start -->
+        <div class="step-four step" data-step>
+          <div class="step-one-intro">
+            <h1>Finishing up</h1>
+            <p>Double-check everything looks OK before confirming.</p>
           </div>
 
+          <div class="finished-product">
+            <div class="product-wrapper">
+              <div class="product">
+                <div class="product-info">
+                  <div class="summaryWrapper">
+                    <p class="chosen-product">Arcade</p>
+                    <span data-cycle>Monthly</span>
+                  </div>
+
+                  <span>Change</span>
+                </div>
+                <p class="final-product-price">$9/mo</p>
+              </div>
+              <div class="chosen-services"></div>
+            </div>
+
+            <div class="total-price-wrapper">
+              <span class="total">Total</span>
+              <p>+$12/mo</p>
+            </div>
+          </div>
+          <div class="navigation">
+            <button class="btn go-back" data-prev>Go Back</button>
+            <button type="submit" class="btn next-step">Confirm</button>
+          </div>
         </div>
-        <div class="navigation">
-          <button class="btn go-back" data-prev>Go Back</button>
-          <button type="submit" class="btn next-step">Confirm</button>        
-        </div>
-      </div>
-      <!-- Step 4 end -->
+        <!-- Step 4 end -->
+      </form>
+      <!-- Steps end -->
+    </main>
 
-    </form>
-    <!-- Steps end -->
-
-  </main>
-
-  <!-- Thank you!
+    <!-- Thank you!
 
   Thanks for confirming your subscription! We hope you have fun 
   using our platform. If you ever need support, please feel free 
   to email us at support@loremgaming.com. -->
 
-  <!-- Step 5 end -->
-  <!-- <div class="attribution">
+    <!-- Step 5 end -->
+    <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Stefan</a>.
   </div> -->
-  <script src="script.js" defer></script>
-</body>
+    <script src="script.js" defer></script>
+  </body>
 </html>
