@@ -5,56 +5,30 @@ const stepCount = [...document.querySelectorAll('[data-step-number]')]
 
 const billingCycleCheckbox = document.getElementById('billingCycle')
 const formPlans = [...multiStepForm.querySelectorAll('[data-plan]')]
-
+const summaryPlan = document.querySelector('.chosen-product')
+const summaryPlanPrice = document.querySelector('.final-product-price')
 // setting the current steps and count
 
-let currentStep = formSteps.findIndex(step => {
-    return step.classList.contains('active')
-})
+let currentStep = formSteps.findIndex(step => step.classList.contains('active'))
 
-let currentStepCount = stepCount.findIndex(count => {
-    return count.classList.contains('active')
-})
+let currentStepCount = stepCount.findIndex(count => count.classList.contains('active'))
 
-// selecting the default values 
+// Handle initial step and count selection
+initializeStep()
 
-if(currentStep < 0){
-    currentStep = 0
-    showCurrentStep()
+// Function to handle initial step and count selection
+function initializeStep() {
+    if (currentStep < 0) {
+        currentStep = 0;
+    }
+    if (currentStepCount < 0) {
+        currentStepCount = 0;
+    }
+    showCurrentStep();
+    showCurrentCountStep();
 }
 
-if(currentStepCount < 0) {
-    currentStepCount = 0
-    showCurrentCountStep()
-}
-
-// event listener for the prev, and next buttons 
-
-multiStepForm.addEventListener('click', e => {
-    let incrementor
-
-    if(e.target.matches('[data-next]')){
-        e.preventDefault()
-        incrementor = 1    
-    } else if(e.target.matches('[data-prev]')){
-        e.preventDefault()
-        incrementor = -1
-    }
-
-    if(incrementor == null) return
-
-    const inputs = [...formSteps[currentStep].querySelectorAll('input')]
-    const allValid = inputs.every(input => input.reportValidity())
-
-    if(allValid) {
-        currentStep += incrementor
-        currentStepCount = currentStep
-        showCurrentStep()
-        showCurrentCountStep()
-    }
-    
-    showCurrentStep()
-})
+multiStepForm.addEventListener('click', handleStepChange)
 
 // showCurrentStep gives the selected step an active class to apply styles
 
@@ -72,29 +46,24 @@ function showCurrentCountStep( ){
     })
 }
 
-// setting the current plan selected
-
-let currentPlan = formPlans.findIndex(plan => {
-    return plan.classList.contains('active')
-})
-
-// making the first value as default
-
-if(currentPlan < 0) {
-    currentPlan = 0
-    showCurrentPlan()
-}
-
 // for every plan giving an event listener to update the currentPlan value to the selected one
 
 formPlans.forEach((plan, index) => {
     plan.addEventListener('click', () => {
         currentPlan = index
+        updatePlanSelection(plan)
         showCurrentPlan()
+        
     })
 })
 
 // this gives the plan an active class to apply different styles 
+let currentPlan = formPlans.findIndex(plan => plan.classList.contains('active'))
+
+if(currentPlan < 0) {
+    currentPlan = 0
+    showCurrentPlan()
+}
 
 function showCurrentPlan () {
     formPlans.forEach((plan, index) => {
@@ -102,24 +71,37 @@ function showCurrentPlan () {
     })
 }
 
-// event listener for the billing cycle checkbox which changes all the price values to the selected cycle
+billingCycleCheckbox.addEventListener('change', updatePriceDisplay)
 
-billingCycleCheckbox.addEventListener('change', function(){
-    const priceData = document.querySelectorAll('.price')
+function handleStepChange(event) {
+    if (!event.target.matches('[data-next],[data-prev]')) return;
 
-    priceData.forEach((data) => {
-        const priceElement = data.dataset.payment.split(', ')
-        const monthlyPrice = priceElement[0]
-        const yearlyPrice = priceElement[1]
-        const bonus = document.querySelectorAll('.year-free')
+    event.preventDefault();
+    const incrementor = event.target.matches('[data-next]') ? 1 : -1;
 
-        if(billingCycleCheckbox.checked){
-            data.textContent = yearlyPrice
-            bonus.forEach(item => item.classList.remove('hide'))
-        } else {
-            data.textContent = monthlyPrice
-            bonus.forEach(item => item.classList.add('hide'))
-        }
-    
-    })
-})
+    const inputs = [...formSteps[currentStep].querySelectorAll('input')];
+    const allValid = inputs.every(input => input.reportValidity());
+
+    if (allValid) {
+        currentStep += incrementor;
+        currentStepCount = currentStep;
+        showCurrentStep();
+        showCurrentCountStep();
+    }
+}
+
+// Function to update plan selection and summary
+function updatePlanSelection(plan) {
+    const selectedPlanName = plan.querySelector('.info p').textContent;
+    const selectedPlanPrices = plan.querySelector('.price').dataset.payment.split(', ');
+    const selectedPlanPrice = billingCycleCheckbox.checked ? selectedPlanPrices[1] : selectedPlanPrices[0];
+  
+    summaryPlan.textContent = selectedPlanName;
+    summaryPlanPrice.textContent = selectedPlanPrice;
+  }
+
+  function updatePriceDisplay() {
+    const cycleTotal = document.querySelector('[data-cycle]');
+    cycleTotal.textContent = billingCycleCheckbox.checked ? 'Yearly' : 'Monthly';
+    formPlans.forEach(plan => updatePlanSelection(plan)); // Update all plan prices
+  }
