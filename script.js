@@ -142,7 +142,27 @@ function updatePriceDisplay() {
   });
 }
 
+function updateChosenServices () {
+  const chosenServices = document.querySelector('.chosen-services')
+  chosenServices.innerHTML = ''
 
+  if(selectedAddOns.length === 0){
+    chosenServices.textContent = 'No Add-Ons Selected'
+    return
+  }
+
+  selectedAddOns.forEach((addOn) => {
+    const addOnTitle = addOn.querySelector('.add-on-title').textContent
+    const addOnPriceElem = addOn.querySelector('.price-choice')
+    const addOnPrice = addOnPriceElem.textContent
+
+    const serviceItem = document.createElement('div')
+    serviceItem.classList.add('chosen-service-item')
+    serviceItem.innerHTML = `<h3>${addOnTitle}</h3><p>${addOnPrice}</p>`
+
+    chosenServices.appendChild(serviceItem)
+  })
+}
 
 function initializeStep() {
   if (currentStep < 0) {
