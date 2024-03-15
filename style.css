@@ -276,6 +276,7 @@ body {
   height: 0;
 }
 
+/* slider animation */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -307,6 +308,7 @@ input:checked + .slider:before {
   transform: translateX(28px);
 }
 
+/* slider style */
 .slider.round {
   border-radius: 34px;
 }
@@ -316,32 +318,56 @@ input:checked + .slider:before {
 }
 
 /* step three */
-
 .add-ons {
   display: grid;
   gap: 1rem;
+  color: var(--marine-blue);
 }
 
+/* addon wrapper styles */
 .add-on-choice {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 500px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--light-gray);
   border-radius: 10px;
   padding: 1rem;
 }
 
 .add-on-choice.active {
-  background-color: #c7e1ff;
-  border-color: blue;
+  background-color: var(--magnolia);
+  border-color: var(--purplish-blue);
 }
 
+/* addon info */
 .choice-info {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
+
+/* addon options settings */
+.option-description{
+  display: grid;
+  gap: 0.3rem;
+}
+
+.option-description span{
+  font-size: 14px;
+  color: var(--cool-gray);
+}
+
+.add-on-title{
+  font-weight: 600;
+}
+
+/* add on price style */
+.price-choice{
+  color: var(--purplish-blue);
+  font-size: 14px;
+}
+
 
 .finished-product {
   display: flex;

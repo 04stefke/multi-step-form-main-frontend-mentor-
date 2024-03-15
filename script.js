@@ -35,8 +35,10 @@ addOnCheckBox.forEach((checkbox) => {
     const addOn = e.target.closest('.add-on-choice')
     if(e.target.checked){
       selectedAddOns.push(addOn)
+      addOn.classList.add('active')
     } else {
       selectedAddOns = selectedAddOns.filter(item => item !== addOn)
+      addOn.classList.remove('active')
     }
 
     updateChosenServices()
