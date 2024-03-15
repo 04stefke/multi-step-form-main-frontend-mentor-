@@ -198,26 +198,43 @@ body {
 }
 
 /* step two */
-
 .plan-choices {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  color: var(--marine-blue);
 }
 
 .choice {
   display: flex;
   flex-direction: column;
-  border: 1px solid lightgray;
+  border: 1px solid var(--light-gray);
   width: 150px;
-  height: 150px;
+  min-height: 170px;
   border-radius: 10px;
   padding: 1rem;
   justify-content: space-between;
 }
 
 .choice.active {
-  border-color: blue;
+  border-color: var(--marine-blue);
+  border-width: 2px;
+  background-color: var(--magnolia);
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.info .price{
+  font-size: 14px;
+  color: var(--cool-gray);
+}
+
+.year-free{
+  font-size: 13px;
 }
 
 .navigation {
