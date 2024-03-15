@@ -141,7 +141,7 @@ body {
   color: var(--marine-blue);
 }
 
-.step-one-intro p{
+.step-one-intro p {
   color: var(--cool-gray);
 }
 
@@ -168,7 +168,6 @@ body {
   flex-direction: column;
   width: 100%;
   gap: 0.5rem;
-
 }
 
 /* each input bar */
@@ -179,8 +178,8 @@ body {
   border-radius: 10px;
 }
 
-.input label{
-  font-size: 14px ;
+.input label {
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -224,19 +223,19 @@ body {
 }
 
 /* info component */
-.info{
+.info {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
-.info .price{
+.info .price {
   font-size: 14px;
   color: var(--cool-gray);
 }
 
 /* discount */
-.year-free{
+.year-free {
   font-size: 13px;
 }
 
@@ -259,7 +258,7 @@ body {
   border-radius: 10px;
 }
 
-.switch-wrapper span{
+.switch-wrapper span {
   color: var(--cool-gray);
 }
 
@@ -348,27 +347,27 @@ input:checked + .slider:before {
 }
 
 /* addon options settings */
-.option-description{
+.option-description {
   display: grid;
   gap: 0.3rem;
 }
 
-.option-description span{
+.option-description span {
   font-size: 14px;
   color: var(--cool-gray);
 }
 
-.add-on-title{
+.add-on-title {
   font-weight: 600;
 }
 
 /* add on price style */
-.price-choice{
+.price-choice {
   color: var(--purplish-blue);
   font-size: 14px;
 }
 
-
+/* step 4 */
 .finished-product {
   display: flex;
   justify-content: space-between;
@@ -380,7 +379,7 @@ input:checked + .slider:before {
 }
 
 .product-wrapper {
-  background: lightgray;
+  background: var(--magnolia);
   border-radius: 10px;
   padding-inline: 1.5rem;
   padding-block: 1rem;
@@ -393,7 +392,27 @@ input:checked + .slider:before {
   justify-content: space-between;
   width: 450px;
   padding-bottom: 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--light-gray);
+  color: var(--marine-blue);
+}
+
+.summaryWrapper {
+  display: flex;
+  gap: 0.3rem;
+  font-weight: 600;
+}
+
+.changeBtn {
+  color: var(--cool-gray);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.final-product-price {
+  font-family: "Ubuntu-Bold";
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .total-price-wrapper {
@@ -401,18 +420,45 @@ input:checked + .slider:before {
   justify-content: space-between;
   align-items: center;
   width: 450px;
+  color: var(--light-gray);
+  font-size: 14px;
+}
+
+.chosen-service-item {
+  display: flex;
+  width: 100%;
+  padding-block: 0.7rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--marine-blue);
+}
+
+.chosen-service-item p {
+  color: var(--cool-gray);
 }
 
 .btn {
   cursor: pointer;
 }
+
+.totalOfProducts {
+  font-size: 16px;
+  color: var(--purplish-blue);
+  font-family: "Ubuntu-Bold";
+}
+
+.submit {
+  background-color: var(--purplish-blue);
+}
+
 .go-back {
   padding: 0.5rem 1rem;
   border: none;
   outline: none;
   border-radius: 5px;
   background: none;
-  color: lightgray;
+  color: var(--cool-gray);
   font-family: "Ubuntu-Medium";
 }
 

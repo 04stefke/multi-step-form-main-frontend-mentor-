@@ -142,6 +142,7 @@ function updatePriceDisplay() {
     const selectedPrice = billingCycleCheckbox.checked ? prices[1] : prices[0];
     priceElement.textContent = selectedPrice;
   });
+  updateChosenServices()
 }
 
 function updateChosenServices () {
@@ -160,7 +161,7 @@ function updateChosenServices () {
 
     const serviceItem = document.createElement('div')
     serviceItem.classList.add('chosen-service-item')
-    serviceItem.innerHTML = `<h3>${addOnTitle}</h3><p>${addOnPrice}</p>`
+    serviceItem.innerHTML = `<p>${addOnTitle}</p><span>${addOnPrice}</span>`
 
     chosenServices.appendChild(serviceItem)
   })
