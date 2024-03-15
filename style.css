@@ -27,6 +27,7 @@
   --white: hsl(0, 0%, 100%);
 }
 
+/* reset */
 *,
 *::before,
 *::after {
@@ -35,21 +36,23 @@
   box-sizing: border-box;
 }
 
+/* body styles */
 body {
   font-family: "Ubuntu-Regular";
   min-width: 100vw;
-  background-color: rgb(207, 235, 245);
+  background-color: var(--magnolia);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
 }
 
+/* card styles */
 .card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--white);
   width: fit-content;
   padding: 1rem;
   border-radius: 20px;
@@ -58,6 +61,7 @@ body {
   height: fit-content;
 }
 
+/* all steps default styles */
 .step {
   display: flex;
   align-items: center;
@@ -66,8 +70,8 @@ body {
   height: 570px;
   width: 500px;
 }
-/* sidebar */
 
+/* sidebar */
 .sidebar {
   background-image: url(./assets/images/bg-sidebar-desktop.svg);
   background-size: cover;
@@ -81,6 +85,7 @@ body {
   border-radius: 10px;
 }
 
+/* option styles */
 .options {
   display: flex;
   align-items: center;
@@ -96,28 +101,29 @@ body {
 }
 
 .option span {
-  color: rgb(187, 187, 187);
+  color: var(--cool-gray);
   text-transform: uppercase;
   font-size: 12px;
 }
 
 .option p {
-  color: white;
+  color: var(--white);
   text-transform: uppercase;
   font-size: 14px;
   font-family: "Ubuntu-Bold";
 }
 
+/* step number */
 .number.active {
-  background: white;
-  color: black;
+  background: var(--light-blue);
+  color: var(--marine-blue);
 }
 
 .number {
-  border: 1px solid white;
+  border: 1px solid var(--white);
   padding: 5px 10px;
   border-radius: 50%;
-  color: white;
+  color: var(--white);
 }
 
 /* sidebar ending */
@@ -129,12 +135,21 @@ body {
 
 .step-one-intro {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--marine-blue);
+}
+
+.step-one-intro p{
+  color: var(--cool-gray);
 }
 
 .form {
   width: 100%;
   display: flex;
   flex-direction: column;
+  color: var(--marine-blue);
 }
 
 .inputs {
@@ -158,8 +173,8 @@ body {
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: darkblue;
-  color: white;
+  background-color: var(--marine-blue);
+  color: var(--magnolia);
   font-family: "Ubuntu-Medium";
 }
 
