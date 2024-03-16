@@ -21,22 +21,23 @@ let currentStepCount = stepCount.findIndex((count) =>
   count.classList.contains("active")
 );
 
-let currentPlan = 0;
+let currentPlan = formPlans.findIndex((plan) =>
+  plan.classList.contains("active")
+);
 
 // Handle initial step and count selection
 initializeStep();
 
 // Function to handle initial step and count selection
-
 multiStepForm.addEventListener("click", handleStepChange);
 
-billingCycleCheckbox.addEventListener("change", updatePriceDisplay);
+billingCycleCheckbox.addEventListener("change", () => updatePriceDisplay());
 
 changeBtn.addEventListener("click", () => {
   currentStep = 1;
   currentStepCount = 1;
-  showCurrentStep()
-  showCurrentCountStep()
+  showCurrentStep();
+  showCurrentCountStep();
 });
 
 addOnCheckBox.forEach((checkbox) => {
@@ -62,7 +63,7 @@ function handleStepChange(event) {
 
   const inputs = [...formSteps[currentStep].querySelectorAll("input")];
   const allValid = inputs.every((input) => input.reportValidity());
-  console.log(allValid);
+
   if (allValid) {
     currentStep += incrementor;
     currentStepCount = currentStep;
@@ -92,6 +93,8 @@ function showCurrentCountStep() {
 formPlans.forEach((plan, index) => {
   plan.addEventListener("click", () => {
     currentPlan = index;
+    console.log("Selected Plan Index:", index)
+    console.log(plan)
     updatePlanSelection(plan);
     updatePriceDisplay();
     showCurrentPlan();
@@ -108,6 +111,7 @@ function showCurrentPlan() {
 
 // Function to update plan selection and summary
 function updatePlanSelection(plan) {
+  console.log(plan)
   const selectedPlanName = plan.querySelector(".info p").textContent;
   const selectedPlanPrices = plan
     .querySelector(".price")
@@ -129,8 +133,6 @@ function updateFinalPrice() {
   const selectedPlanPrice = billingCycleCheckbox.checked
     ? selectedPlanPrices[1]
     : selectedPlanPrices[0];
-
-  summaryPlanPrice.textContent = selectedPlanPrice;
 }
 
 // Function to update price display based on billing cycle
@@ -152,8 +154,6 @@ function updatePriceDisplay() {
     switchWrapper[0].classList.add("bold");
     switchWrapper[2].classList.remove("bold");
   }
-
-  formPlans.forEach((plan) => updatePlanSelection(plan)); // Update all plan prices
 
   const addOnPrices = document.querySelectorAll(".add-on-choice .price-choice");
   addOnPrices.forEach((priceElement) => {
@@ -185,6 +185,8 @@ function updateChosenServices() {
     chosenServices.appendChild(serviceItem);
   });
 }
+
+updateChosenServices();
 
 function initializeStep() {
   if (currentStep < 0) {
@@ -220,3 +222,4 @@ inputs.forEach((input) => {
     errSpan.classList.add("hide");
   });
 });
+
