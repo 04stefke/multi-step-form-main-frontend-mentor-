@@ -45,6 +45,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 /* card styles */
@@ -213,8 +214,8 @@ body {
 }
 
 
-/* next step btn */
-.next-step {
+/* next step btn and submit */
+.next-step{
   align-self: flex-end;
   width: fit-content;
   padding: 0.75rem 1.5rem;
@@ -516,14 +517,23 @@ input:checked + .slider:before {
 /* submit btn  */
 .submit {
   background-color: var(--purplish-blue);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  color: var(--magnolia);
+  font-family: "Ubuntu-Medium";
+}
+
+.submit:hover{
+  filter: brightness(150%)
 }
 
 /* go back btn */
 .go-back {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border: none;
   outline: none;
-  border-radius: 5px;
   background: none;
   color: var(--cool-gray);
   font-family: "Ubuntu-Bold";

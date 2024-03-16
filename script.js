@@ -2,7 +2,7 @@
 const multiStepForm = document.querySelector("[data-multi-step-form]");
 const formSteps = [...multiStepForm.querySelectorAll("[data-step]")];
 const stepCount = [...document.querySelectorAll("[data-step-number]")];
-
+const changeBtn = document.querySelector(".changeBtn");
 const billingCycleCheckbox = document.getElementById("billingCycle");
 const formPlans = [...multiStepForm.querySelectorAll("[data-plan]")];
 const summaryPlan = document.querySelector(".chosen-product");
@@ -31,6 +31,13 @@ initializeStep();
 multiStepForm.addEventListener("click", handleStepChange);
 
 billingCycleCheckbox.addEventListener("change", updatePriceDisplay);
+
+changeBtn.addEventListener("click", () => {
+  currentStep = 1;
+  currentStepCount = 1;
+  showCurrentStep()
+  showCurrentCountStep()
+});
 
 addOnCheckBox.forEach((checkbox) => {
   checkbox.addEventListener("change", (e) => {
@@ -138,14 +145,13 @@ function updatePriceDisplay() {
       : item.classList.add("hide");
   });
 
-  if(billingCycleCheckbox.checked){
-    switchWrapper[0].classList.remove('bold')
-    switchWrapper[2].classList.add('bold')
-  } else{
-    switchWrapper[0].classList.add('bold')
-    switchWrapper[2].classList.remove('bold')
+  if (billingCycleCheckbox.checked) {
+    switchWrapper[0].classList.remove("bold");
+    switchWrapper[2].classList.add("bold");
+  } else {
+    switchWrapper[0].classList.add("bold");
+    switchWrapper[2].classList.remove("bold");
   }
-
 
   formPlans.forEach((plan) => updatePlanSelection(plan)); // Update all plan prices
 
