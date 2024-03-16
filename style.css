@@ -162,6 +162,10 @@ body {
   gap: 2rem;
 }
 
+.hero{
+  width: 100%;
+}
+
 /* input */
 .input {
   display: flex;
