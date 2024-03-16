@@ -302,6 +302,12 @@ body {
   color: var(--cool-gray);
 }
 
+.switch-wrapper .bold{
+  color: var(--marine-blue);
+  font-weight: 600;
+}
+
+
 .switch {
   position: relative;
   display: inline-block;

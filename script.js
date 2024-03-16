@@ -130,12 +130,23 @@ function updateFinalPrice() {
 function updatePriceDisplay() {
   const cycleTotal = document.querySelector("[data-cycle]");
   let discount = document.querySelectorAll(".year-free");
+  const switchWrapper = document.querySelectorAll(".switch-wrapper span");
   cycleTotal.textContent = billingCycleCheckbox.checked ? "Yearly" : "Monthly";
   discount.forEach((item) => {
     billingCycleCheckbox.checked
       ? item.classList.remove("hide")
       : item.classList.add("hide");
   });
+
+  if(billingCycleCheckbox.checked){
+    switchWrapper[0].classList.remove('bold')
+    switchWrapper[2].classList.add('bold')
+  } else{
+    switchWrapper[0].classList.add('bold')
+    switchWrapper[2].classList.remove('bold')
+  }
+
+
   formPlans.forEach((plan) => updatePlanSelection(plan)); // Update all plan prices
 
   const addOnPrices = document.querySelectorAll(".add-on-choice .price-choice");
@@ -199,7 +210,7 @@ const inputs = document.querySelectorAll(".input input");
 inputs.forEach((input) => {
   input.addEventListener("input", () => {
     const errSpan = input.nextElementSibling;
-    input.classList.remove('error')
-    errSpan.classList.add('hide')
+    input.classList.remove("error");
+    errSpan.classList.add("hide");
   });
 });
