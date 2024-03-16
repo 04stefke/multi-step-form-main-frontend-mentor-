@@ -378,6 +378,7 @@ input:checked + .slider:before {
   border: 1px solid var(--light-gray);
   border-radius: 10px;
   padding: 1rem;
+  cursor: pointer;
 }
 
 .add-on-choice.active {
@@ -385,11 +386,20 @@ input:checked + .slider:before {
   border-color: var(--purplish-blue);
 }
 
+.add-on-choice:hover{
+  border-color: var(--purplish-blue);
+}
+
+.add-on-choice.active:hover{
+  border-color: var(--marine-blue);
+}
+
 /* addon info */
 .choice-info {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  cursor: pointer;
 }
 
 /* addon options settings */
@@ -448,6 +458,7 @@ input:checked + .slider:before {
   font-weight: 600;
 }
 
+/* changeBtn styles */
 .changeBtn {
   color: var(--cool-gray);
   text-decoration: underline;
@@ -455,12 +466,18 @@ input:checked + .slider:before {
   font-size: 14px;
 }
 
+.changeBtn:hover{
+  color: var(--purplish-blue);
+}
+
+/* final product price */
 .final-product-price {
   font-family: "Ubuntu-Bold";
   font-weight: 700;
   font-size: 14px;
 }
 
+/* total price wrapper */
 .total-price-wrapper {
   display: flex;
   justify-content: space-between;
@@ -470,6 +487,7 @@ input:checked + .slider:before {
   font-size: 14px;
 }
 
+/* plan styles  */
 .chosen-service-item {
   display: flex;
   width: 100%;
@@ -484,6 +502,7 @@ input:checked + .slider:before {
   color: var(--cool-gray);
 }
 
+/* all btn style */
 .btn {
   cursor: pointer;
 }
@@ -494,10 +513,12 @@ input:checked + .slider:before {
   font-family: "Ubuntu-Bold";
 }
 
+/* submit btn  */
 .submit {
   background-color: var(--purplish-blue);
 }
 
+/* go back btn */
 .go-back {
   padding: 0.5rem 1rem;
   border: none;
@@ -513,6 +534,7 @@ input:checked + .slider:before {
   color: var(--marine-blue);
 }
 
+/* toggle classes */
 .step.active {
   display: flex;
 }
