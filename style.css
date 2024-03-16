@@ -170,6 +170,7 @@ body {
   flex-direction: column;
   width: 100%;
   gap: 0.5rem;
+  position: relative;
 }
 
 /* each input bar */
@@ -180,13 +181,23 @@ body {
   border-radius: 10px;
   color: var(--marine-blue);
   font-weight: 600;
-  font-family: 'Ubuntu-Bold'
+  font-family: 'Ubuntu-Bold';
+  cursor: pointer;
 }
 
 .input .error,
 .input .error,
 .input .error{
   border-color: var(--strawberry-red);
+}
+
+.hero{
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  color: var(--strawberry-red);
+  font-family: 'Ubuntu-Bold';
+
 }
 
 .input label {
