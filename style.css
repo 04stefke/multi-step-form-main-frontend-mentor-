@@ -247,13 +247,19 @@ body {
   border-radius: 10px;
   padding: 1rem;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+/* hover effect for plan choices */
+.choice:hover{
+  border-color: var(--marine-blue);
 }
 
 /* active choice styles */
 .choice.active {
   border-color: var(--marine-blue);
-  border-width: 2px;
   background-color: var(--magnolia);
+  box-shadow: 0 0 2px var(--marine-blue);
 }
 
 /* info component */
