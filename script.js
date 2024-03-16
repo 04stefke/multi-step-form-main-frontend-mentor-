@@ -93,8 +93,6 @@ function showCurrentCountStep() {
 formPlans.forEach((plan, index) => {
   plan.addEventListener("click", () => {
     currentPlan = index;
-    console.log("Selected Plan Index:", index)
-    console.log(plan)
     updatePlanSelection(plan);
     updatePriceDisplay();
     showCurrentPlan();
@@ -111,7 +109,6 @@ function showCurrentPlan() {
 
 // Function to update plan selection and summary
 function updatePlanSelection(plan) {
-  console.log(plan)
   const selectedPlanName = plan.querySelector(".info p").textContent;
   const selectedPlanPrices = plan
     .querySelector(".price")
@@ -155,6 +152,10 @@ function updatePriceDisplay() {
     switchWrapper[2].classList.remove("bold");
   }
 
+  formPlans.forEach((plan) => updatePlanSelection(plan));
+
+  updatePlanSelection(formPlans[currentPlan]);
+
   const addOnPrices = document.querySelectorAll(".add-on-choice .price-choice");
   addOnPrices.forEach((priceElement) => {
     const prices = priceElement.dataset.payment.split(", ");
@@ -177,6 +178,7 @@ function updateChosenServices() {
     const addOnTitle = addOn.querySelector(".add-on-title").textContent;
     const addOnPriceElem = addOn.querySelector(".price-choice");
     const addOnPrice = addOnPriceElem.textContent;
+    
 
     const serviceItem = document.createElement("div");
     serviceItem.classList.add("chosen-service-item");
@@ -222,4 +224,3 @@ inputs.forEach((input) => {
     errSpan.classList.add("hide");
   });
 });
-
