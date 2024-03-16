@@ -53,7 +53,7 @@ function handleStepChange(event) {
 
   const inputs = [...formSteps[currentStep].querySelectorAll("input")];
   const allValid = inputs.every((input) => input.reportValidity());
-
+  console.log(allValid)
   if (allValid) {
     currentStep += incrementor;
     currentStepCount = currentStep;
@@ -178,3 +178,9 @@ function initializeStep() {
   showCurrentCountStep();
   updatePlanSelection(formPlans[currentPlan]);
 }
+
+document.addEventListener('invalid', (function () {
+  return function (e) {
+      e.preventDefault();
+  };
+})(), true);

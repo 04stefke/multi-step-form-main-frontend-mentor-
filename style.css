@@ -176,6 +176,9 @@ body {
   border: 1px solid lightgray;
   padding: 1rem;
   border-radius: 10px;
+  color: var(--marine-blue);
+  font-weight: 600;
+  font-family: 'Ubuntu-Bold'
 }
 
 .input label {
