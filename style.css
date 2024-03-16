@@ -162,9 +162,7 @@ body {
   gap: 2rem;
 }
 
-.hero{
-  width: 100%;
-}
+
 
 /* input */
 .input {
@@ -177,12 +175,18 @@ body {
 /* each input bar */
 .input input {
   outline: none;
-  border: 1px solid lightgray;
+  border: 1px solid var(--cool-gray);
   padding: 1rem;
   border-radius: 10px;
   color: var(--marine-blue);
   font-weight: 600;
   font-family: 'Ubuntu-Bold'
+}
+
+.input .error,
+.input .error,
+.input .error{
+  border-color: var(--strawberry-red);
 }
 
 .input label {

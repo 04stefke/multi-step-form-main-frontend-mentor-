@@ -7,8 +7,10 @@ const billingCycleCheckbox = document.getElementById("billingCycle");
 const formPlans = [...multiStepForm.querySelectorAll("[data-plan]")];
 const summaryPlan = document.querySelector(".chosen-product");
 const summaryPlanPrice = document.querySelector(".final-product-price");
-const addOnCheckBox = document.querySelectorAll('.add-on-choice input[type="checkbox"]')
-let selectedAddOns = []
+const addOnCheckBox = document.querySelectorAll(
+  '.add-on-choice input[type="checkbox"]'
+);
+let selectedAddOns = [];
 // setting the current steps and count
 
 let currentStep = formSteps.findIndex((step) =>
@@ -31,19 +33,19 @@ multiStepForm.addEventListener("click", handleStepChange);
 billingCycleCheckbox.addEventListener("change", updatePriceDisplay);
 
 addOnCheckBox.forEach((checkbox) => {
-  checkbox.addEventListener('change', (e) => {
-    const addOn = e.target.closest('.add-on-choice')
-    if(e.target.checked){
-      selectedAddOns.push(addOn)
-      addOn.classList.add('active')
+  checkbox.addEventListener("change", (e) => {
+    const addOn = e.target.closest(".add-on-choice");
+    if (e.target.checked) {
+      selectedAddOns.push(addOn);
+      addOn.classList.add("active");
     } else {
-      selectedAddOns = selectedAddOns.filter(item => item !== addOn)
-      addOn.classList.remove('active')
+      selectedAddOns = selectedAddOns.filter((item) => item !== addOn);
+      addOn.classList.remove("active");
     }
 
-    updateChosenServices()
-  })
-})
+    updateChosenServices();
+  });
+});
 
 function handleStepChange(event) {
   if (!event.target.matches("[data-next],[data-prev]")) return;
@@ -53,7 +55,7 @@ function handleStepChange(event) {
 
   const inputs = [...formSteps[currentStep].querySelectorAll("input")];
   const allValid = inputs.every((input) => input.reportValidity());
-  console.log(allValid)
+  console.log(allValid);
   if (allValid) {
     currentStep += incrementor;
     currentStepCount = currentStep;
@@ -131,9 +133,9 @@ function updatePriceDisplay() {
   cycleTotal.textContent = billingCycleCheckbox.checked ? "Yearly" : "Monthly";
   discount.forEach((item) => {
     billingCycleCheckbox.checked
-    ? item.classList.remove("hide")
-    : item.classList.add("hide");
-  }) 
+      ? item.classList.remove("hide")
+      : item.classList.add("hide");
+  });
   formPlans.forEach((plan) => updatePlanSelection(plan)); // Update all plan prices
 
   const addOnPrices = document.querySelectorAll(".add-on-choice .price-choice");
@@ -142,29 +144,29 @@ function updatePriceDisplay() {
     const selectedPrice = billingCycleCheckbox.checked ? prices[1] : prices[0];
     priceElement.textContent = selectedPrice;
   });
-  updateChosenServices()
+  updateChosenServices();
 }
 
-function updateChosenServices () {
-  const chosenServices = document.querySelector('.chosen-services')
-  chosenServices.innerHTML = ''
+function updateChosenServices() {
+  const chosenServices = document.querySelector(".chosen-services");
+  chosenServices.innerHTML = "";
 
-  if(selectedAddOns.length === 0){
-    chosenServices.textContent = 'No Add-Ons Selected'
-    return
+  if (selectedAddOns.length === 0) {
+    chosenServices.textContent = "No Add-Ons Selected";
+    return;
   }
 
   selectedAddOns.forEach((addOn) => {
-    const addOnTitle = addOn.querySelector('.add-on-title').textContent
-    const addOnPriceElem = addOn.querySelector('.price-choice')
-    const addOnPrice = addOnPriceElem.textContent
+    const addOnTitle = addOn.querySelector(".add-on-title").textContent;
+    const addOnPriceElem = addOn.querySelector(".price-choice");
+    const addOnPrice = addOnPriceElem.textContent;
 
-    const serviceItem = document.createElement('div')
-    serviceItem.classList.add('chosen-service-item')
-    serviceItem.innerHTML = `<p>${addOnTitle}</p><span>${addOnPrice}</span>`
+    const serviceItem = document.createElement("div");
+    serviceItem.classList.add("chosen-service-item");
+    serviceItem.innerHTML = `<p>${addOnTitle}</p><span>${addOnPrice}</span>`;
 
-    chosenServices.appendChild(serviceItem)
-  })
+    chosenServices.appendChild(serviceItem);
+  });
 }
 
 function initializeStep() {
@@ -179,8 +181,25 @@ function initializeStep() {
   updatePlanSelection(formPlans[currentPlan]);
 }
 
-document.addEventListener('invalid', (function () {
-  return function (e) {
+document.addEventListener(
+  "invalid",
+  (function () {
+    return function (e) {
       e.preventDefault();
-  };
-})(), true);
+      const input = e.target;
+      const errorSpan = input.nextElementSibling;
+      input.classList.add("error");
+      errorSpan.classList.remove("hide");
+    };
+  })(),
+  true
+);
+
+const inputs = document.querySelectorAll(".input input");
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    const errSpan = input.nextElementSibling;
+    input.classList.remove('error')
+    errSpan.classList.add('hide')
+  });
+});
