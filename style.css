@@ -226,6 +226,10 @@ body {
   font-family: "Ubuntu-Medium";
 }
 
+.next-step:hover{
+  filter: brightness(150%);
+}
+
 /* step two */
 .plan-choices {
   display: flex;
@@ -489,7 +493,12 @@ input:checked + .slider:before {
   border-radius: 5px;
   background: none;
   color: var(--cool-gray);
-  font-family: "Ubuntu-Medium";
+  font-family: "Ubuntu-Bold";
+  
+}
+
+.go-back:hover{
+  color: var(--marine-blue);
 }
 
 .step.active {
