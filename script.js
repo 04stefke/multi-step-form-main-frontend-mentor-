@@ -179,7 +179,7 @@ function updatePriceDisplay() {
   const cycleTotal = document.querySelector("[data-cycle]");
   let discount = document.querySelectorAll(".year-free");
   const switchWrapper = document.querySelectorAll(".switch-wrapper span");
-  cycleTotal.textContent = billingCycleCheckbox.checked ? "Yearly" : "Monthly";
+  cycleTotal.textContent = billingCycleCheckbox.checked ? "(Yearly)" : "(Monthly)";
   discount.forEach((item) => {
     billingCycleCheckbox.checked
       ? item.classList.remove("hide")
