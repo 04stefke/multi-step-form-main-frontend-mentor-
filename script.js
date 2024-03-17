@@ -10,6 +10,7 @@ const summaryPlanPrice = document.querySelector(".final-product-price");
 const addOnCheckBox = document.querySelectorAll(
   '.add-on-choice input[type="checkbox"]'
 );
+
 let selectedAddOns = [];
 // setting the current steps and count
 
@@ -24,6 +25,9 @@ let currentStepCount = stepCount.findIndex((count) =>
 let currentPlan = formPlans.findIndex((plan) =>
   plan.classList.contains("active")
 );
+
+let totalPrice = 0;
+let currentPlanPrice = parseFloat(formPlans[0].querySelector(".price").dataset.payment.split(", ")[billingCycleCheckbox.checked ? 1 : 0].slice(1).replace(/[^0-9.]/g, ""));
 
 // Handle initial step and count selection
 initializeStep();
@@ -55,6 +59,27 @@ addOnCheckBox.forEach((checkbox) => {
   });
 });
 
+
+function calculateTotalPrice() {
+  totalPrice = 0;
+  totalPrice += currentPlanPrice;
+
+  selectedAddOns.forEach((addon) => {
+    const addOnPriceElem = addon.querySelector(".price-choice");
+    const addOnPrice =
+      addOnPriceElem.dataset.payment.split(", ")[
+        billingCycleCheckbox.checked ? 1 : 0
+      ];
+    const addOnPriceNumber = parseFloat(
+      addOnPrice.slice(1).replace(/[^0-9.]/g, "")
+    );
+    totalPrice += addOnPriceNumber;
+  });
+
+  const totalPriceElem = document.querySelector(".totalOfProducts");
+  totalPriceElem.textContent = totalPrice.toFixed(2);
+}
+
 function handleStepChange(event) {
   if (!event.target.matches("[data-next],[data-prev]")) return;
 
@@ -69,7 +94,8 @@ function handleStepChange(event) {
     currentStepCount = currentStep;
     showCurrentStep();
     showCurrentCountStep();
-    updateFinalPrice();
+    updatePlanSelection(formPlans[currentPlan]);
+    calculateTotalPrice();
   }
 }
 
@@ -109,6 +135,10 @@ function showCurrentPlan() {
 
 // Function to update plan selection and summary
 function updatePlanSelection(plan) {
+  if (!plan) {
+    return;
+  }
+
   const selectedPlanName = plan.querySelector(".info p").textContent;
   const selectedPlanPrices = plan
     .querySelector(".price")
@@ -130,6 +160,7 @@ function updateFinalPrice() {
   const selectedPlanPrice = billingCycleCheckbox.checked
     ? selectedPlanPrices[1]
     : selectedPlanPrices[0];
+  console.log(selectedPlanPrice);
 }
 
 // Function to update price display based on billing cycle
@@ -156,13 +187,22 @@ function updatePriceDisplay() {
 
   updatePlanSelection(formPlans[currentPlan]);
 
+  const selectedPlanPrices = formPlans[currentPlan]
+    .querySelector(".price")
+    .dataset.payment.split(", ");
+  currentPlanPrice = billingCycleCheckbox.checked
+    ? parseFloat(selectedPlanPrices[1].slice(1).replace(/[^0-9.]/g, ""))
+    : parseFloat(selectedPlanPrices[0].slice(1).replace(/[^0-9.]/g, ""));
+
   const addOnPrices = document.querySelectorAll(".add-on-choice .price-choice");
   addOnPrices.forEach((priceElement) => {
     const prices = priceElement.dataset.payment.split(", ");
     const selectedPrice = billingCycleCheckbox.checked ? prices[1] : prices[0];
     priceElement.textContent = selectedPrice;
   });
+
   updateChosenServices();
+  calculateTotalPrice();
 }
 
 function updateChosenServices() {
@@ -178,7 +218,6 @@ function updateChosenServices() {
     const addOnTitle = addOn.querySelector(".add-on-title").textContent;
     const addOnPriceElem = addOn.querySelector(".price-choice");
     const addOnPrice = addOnPriceElem.textContent;
-    
 
     const serviceItem = document.createElement("div");
     serviceItem.classList.add("chosen-service-item");
