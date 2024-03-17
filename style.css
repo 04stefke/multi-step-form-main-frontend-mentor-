@@ -39,14 +39,20 @@
 /* body styles */
 body {
   font-family: "Ubuntu-Regular";
-  min-width: 100vw;
+
   background-color: var(--magnolia);
+
+
+  scroll-behavior: smooth;
+  color: var(--marine-blue);
+}
+
+.wrapper{
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  scroll-behavior: smooth;
-  color: var(--marine-blue);
+  min-width: 100vw;
 }
 
 /* card styles */
@@ -555,13 +561,47 @@ input:checked + .slider:before {
 }
 
 
-@media screen and (min-width: 375px) {
+@media screen and (max-width: 950px ) {
+  .card{
+    gap: 1rem;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 830px ) {
+  .sidebar{
+    width: 250px;
+  }
+
+  .step{
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 830px ) {
+  .options{
+    padding-left: 1rem ;
+    padding-top: 1rem;
+    
+  }
+  .sidebar{
+    gap: 1rem;
+    width: 200px;
+  }
+
+  .step{
+    width: 290px;
+  }
+}
+
+@media screen and (max-width: 555px) {
   body{
     align-items: start;
   }
   .card{
     flex-direction: column;
     padding: 0;
+    gap: 0;
     height: 100vh;
     justify-content: start;
     width: 100%;
@@ -587,6 +627,7 @@ input:checked + .slider:before {
     align-items: start;
     justify-content: center;
     object-fit: cover;
+    border-radius: 0;
   }
 
   .steps{
@@ -594,9 +635,9 @@ input:checked + .slider:before {
   }
 
   .step{
-    height: 300px;
+    height:80%;
     width: 100%;
-    justify-content: center;
+
   }
   .step-one-intro{
     width: 300px;
