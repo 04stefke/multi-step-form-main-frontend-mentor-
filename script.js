@@ -27,7 +27,13 @@ let currentPlan = formPlans.findIndex((plan) =>
 );
 
 let totalPrice = 0;
-let currentPlanPrice = parseFloat(formPlans[0].querySelector(".price").dataset.payment.split(", ")[billingCycleCheckbox.checked ? 1 : 0].slice(1).replace(/[^0-9.]/g, ""));
+let currentPlanPrice = parseFloat(
+  formPlans[0]
+    .querySelector(".price")
+    .dataset.payment.split(", ")
+    [billingCycleCheckbox.checked ? 1 : 0].slice(1)
+    .replace(/[^0-9.]/g, "")
+);
 
 // Handle initial step and count selection
 initializeStep();
@@ -59,7 +65,6 @@ addOnCheckBox.forEach((checkbox) => {
   });
 });
 
-
 function calculateTotalPrice() {
   totalPrice = 0;
   totalPrice += currentPlanPrice;
@@ -77,7 +82,13 @@ function calculateTotalPrice() {
   });
 
   const totalPriceElem = document.querySelector(".totalOfProducts");
-  totalPriceElem.textContent = totalPrice.toFixed(2);
+  totalPriceElem.textContent = billingCycleCheckbox.checked
+    ? `$${totalPrice.toFixed(2)}/yr`
+    : `$${totalPrice.toFixed(2)}/mo`;
+  const totalDef = document.querySelector(".total-def");
+  totalDef.textContent = billingCycleCheckbox.checked
+    ? "(per year)"
+    : "(per month)";
 }
 
 function handleStepChange(event) {
