@@ -604,6 +604,10 @@ input:checked + .slider:before {
     justify-content: flex-start;
     gap: 1rem;
   }
+
+  .add-on-choice{
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 555px) {
@@ -677,6 +681,16 @@ input:checked + .slider:before {
     background-color: var(white);
   }
   .step-two{
+    padding-block: 1rem;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .add-on-choice{
+    width: 100%;
+  }
+
+  .step-three{
+    padding-block: 1rem;
     justify-content: space-between;
     height: 100%;
   }
